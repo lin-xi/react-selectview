@@ -1,2 +1,2 @@
-var router = require('./src/router');
-export.XRouter = router;
+var reactXSlider = require('./src/XSlider');
+export.reactXSlider = reactXSlider;

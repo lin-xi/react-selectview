@@ -1,63 +1,72 @@
-React-XRouter
+React-SelectView
 ====
 
->React-XRouter 是一个类似ReactRouter的类库。
+>React-SelectView 是一个模拟ios原生的选择控件。
+
+![selectview](./screenshot.png)
 
 --------
 	
 ##依赖
-    <label>无</label>
+    <label>react</label>
     
 --------
 	
 ##安装：
-    >npm install react-xrouter --save
+    >npm install react-selectview --save
+    
+--------
+
+##所有配置项 props
+
+    data: array,  数组
+    show: bool, 显示或隐藏
+    change: function, 点击确认按钮的回调
+    selectChange: function, 选择项改变回调
 	
 --------
 ## 使用
 
 ```
 
-var Router = require('react-xrouter');
+var snedTimeData = [
+[], []
+];
+表示有两个选择项
 
-Router.route({
-	'/': {
-		enter: function () {
-			require.ensure([], function(require){
-				//可以做些统计写日志的工作
-    			var HomePage = require('./pages/home/HomePage.js');
-				ReactDOM.render(<HomePage/>, document.querySelector('#pinzhi'));
-			});
-		}
+var snedTimeData = [
+[], [], []
+];
+表示有三个选择项
+
+
+var snedTimeData = [
+[
+	{
+		name: '2015-02-01',
+		value: '2015-02-01'
 	},
-	'/detail/:id': {
-		enter: function (param) {
-			require.ensure([], function(require){
-    			var DetailPage = require('./pages/detail/DetailPage.js');
-				ReactDOM.render(<DetailPage params={param}/>, document.querySelector('#pinzhi'));
-			});
-		},
-		leave: function(){
-		
-		}
-	},
-	'default': {
-		redirect: '/'
+	{
+		name: '2015-02-02',
+		value: '2015-02-01'
 	}
-});
+], [
+	{
+		name: '06:00',
+		value: '1456140397704'
+	},
+	{
+		name: '07:00',
+		value: '1456140397306'
+	},
+	{
+		name: '08:00',
+		value: '1456140397306'
+	}
+]
+];
 
-
-```
-
---------
-## API
-
-```
-
-var Router = require('react-xrouter');
-
-Router.back();
-
-Router.redirect(path);
+<SelectView data={snedTimeData} show={true} change={this.sendTimeChange} selectChange={this.selectChange}>
+</SelectView>
 
 ```
